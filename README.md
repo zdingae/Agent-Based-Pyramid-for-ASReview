@@ -4,7 +4,7 @@ An improved algorithm for ASReview that addresses the challenge of identifying o
 
 ## 🎯 Problem Statement
 
-The exponential growth of academic literature creates significant challenges for systematic reviews. While ML-based active learning systems like ASReview excel at finding similar documents, they often create "filter bubbles" that miss relevant papers with diverse characteristics located in sparse feature regions.
+The exponential growth of academic literature creates significant challenges for systematic reviews. While ML-based active learning systems like ASReview excel at finding similar documents, they might create "filter bubbles" that miss relevant papers with diverse characteristics located in sparse feature regions.
 
 ## 🚀 Solution
 
