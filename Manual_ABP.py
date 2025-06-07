@@ -564,7 +564,7 @@ def test_adaptive_hybrid():
     
     print(f"Dataset: {len(data)} documents, {labels.sum()} relevant")
     
-    # Test different configurations
+    # Test different configurations (can be used for determine the best switching rule & pyramid structure)
     configs = [
         {'switch_threshold': 0.05, 'n_layers': 5, 'docs_per_agent': 50},
         {'switch_threshold': 0.03, 'n_layers': 6, 'docs_per_agent': 40},
