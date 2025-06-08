@@ -253,7 +253,7 @@ class AdaptiveASReviewAgentHybrid:
             
             # Lower similarity = higher outlier score
             distance_scores = 1 - avg_similarity
-            scores += distance_scores * 0.6
+            scores += distance_scores * 0.4
         
         # Method 2: Keyword scoring for domain-specific outliers
         # keywords = ['wilson', 'copper', 'hepatic', 'treatment', 'patient', 
@@ -273,7 +273,7 @@ class AdaptiveASReviewAgentHybrid:
         if keyword_scores.max() > 0:
             keyword_scores = keyword_scores / keyword_scores.max()
         
-        scores += keyword_scores * 0.4
+        scores += keyword_scores * 0.6
         
         return scores
     
