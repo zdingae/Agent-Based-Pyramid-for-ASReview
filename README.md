@@ -28,8 +28,7 @@ Agent-Based Pyramid (ABP) - A dynamic framework that complements ASReview with s
 
 ## 📊 Performance
 
-Experiments on SYNERGY datasets demonstrate:
-from:https://github.com/asreview/synergy-dataset
+Experiments on [SYNERGY](https://github.com/asreview/synergy-dataset) datasets demonstrate:
 - Superior recall curves compared to standard ASReview
 - Significant improvements in outlier detection
 - Better coverage of heterogeneous document collections
