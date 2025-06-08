@@ -13,7 +13,7 @@ class AdaptiveASReviewAgentHybrid:
     """
     Adaptive hybrid approach:
     1. Start with standard ASReview
-    2. Switch to agent-based pyramid when hitting sparse regions (5% consecutive irrelevant)
+    2. Switch to agent-based pyramid when hitting sparse regions 
     3. Can switch back to ASReview if finding relevant documents again
     """
     
