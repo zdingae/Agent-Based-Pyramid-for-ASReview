@@ -10,6 +10,13 @@ The exponential growth of academic literature creates significant challenges for
 
 Agent-Based Pyramid (ABP) - A dynamic framework that complements ASReview with systematic exploration capabilities to ensure comprehensive literature coverage.
 
+## 📋 Requirements
+```
+pip install asreview>=2.0
+pip install synergy-dataset
+pip install numpy pandas scikit-learn matplotlib tqdm
+```
+
 ## ✨ Key Features
 
 ### Dual-Mode Operation
