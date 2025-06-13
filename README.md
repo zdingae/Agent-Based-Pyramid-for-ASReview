@@ -126,7 +126,7 @@ keywords = ['Wilson', 'copper', 'hepatic', 'treatment', 'patient',
 - **Flexibility**: Allows multiple mode switches during review process
 
 ## 📈 Batch Simulation Framework
-The auto mode script provides a framework for running multiple simulations:
+The auto mode script provides a framework for running multiple simulations with different random seeds:
 ```python
 # Example configuration
 params = {
