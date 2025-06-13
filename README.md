@@ -2,7 +2,7 @@
 
 An improved algorithm for ASReview that addresses the challenge of identifying outlier papers in systematic reviews.
 
-## 🎯 Problem Statement
+## 🐼 Problem Statement
 
 The exponential growth of academic literature creates significant challenges for systematic reviews. While ML-based active learning systems like ASReview excel at finding similar documents, they might create "filter bubbles" that miss relevant papers with diverse characteristics located in sparse feature regions.
 
@@ -16,6 +16,13 @@ pip install asreview>=2.0
 pip install synergy-dataset
 pip install numpy pandas scikit-learn matplotlib tqdm
 ```
+## 🎯 Key Definitions
+
+Active Learning: Machine learning approach where the model interactively queries for labels on the most informative samples
+Agent-based Pyramid: Hierarchical structure organizing unreviewed documents into layers based on outlier scores
+Mode Switching: Adaptive mechanism to transition between ASReview and agent-based selection
+Feature Importance: Weights extracted from Random Forest classifier to identify discriminative terms
+Election Score: Agent performance metric balancing success rate and remaining document potential
 
 ## ✨ Key Features
 
