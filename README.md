@@ -93,8 +93,51 @@ keywords = ['Wilson', 'copper', 'hepatic', 'treatment', 'patient',
 #### Pyramid Construction
 - **Score Calculation**: Combined distance + feature scores for all unreviewed documents
 - **Stratification**: Documents sorted by score and divided into `n_layers` (default: 5)
-- **Agent Creation**: Each layer subdivided into micro-agents, with each agent managing `docs_per_agent documents` (configurable, default: 50)
+- **Agent Creation**: Each layer subdivided into micro-agents, with each agent managing `docs_per_agent documents` (configurable, default: 50). This parameter allows fine-tuning the granularity of agent control:
+  - Smaller `docs_per_agent` (e.g., 10-20): More agents with finer control, better adaptability but higher computational overhead
+  - Larger `docs_per_agent` (e.g., 100-200): Fewer agents with coarser control, faster processing but potentially less responsive to local document clusters
 - **Initial State**: All agents start with `election_score = 0.5`
+
+#### Agent Selection & Update
+- **Selection**: Agent with highest election score reviews next batch
+- **Batch Strategy**: Top 10 documents by feature score within selected agent
+- **Score Update**:
+  - Success rate = 0: `election_score = 0.1` (heavily penalized)
+  - Success rate = 1: `election_score = 2.0` (strongly promoted)
+  - Otherwise: `success_rate × (1 + remaining_ratio)`
+- **Deactivation**: Agent removed when all documents reviewed
+
+## 🔄 Mode Switching Logic
+### ASReview → Agent Mode
+- **Trigger Condition**: Consecutive irrelevant documents exceed `switch_threshold`
+  - `switch_threshold`: Percentage of total documents (default: 0.05 = 5%)
+  - Lower threshold = earlier switch to agent mode (e.g., 0.03 = 3% for aggressive switching)
+  - Higher threshold = more patience with ASReview (e.g., 0.20 = 20% for conservative switching)
+- **Additional Constraint**: Must find at least one relevant document beyond seeds
+- **Action**: Creates pyramid structure from all remaining unreviewed documents
+- **Example**: With 1000 documents and threshold=0.05, switches after 50 consecutive irrelevant findings
+
+### Agent → ASReview Mode
+- **Trigger Condition**(either): 
+  - Relevant documents are rediscovered in agent mode (consecutive_irrelevant = 0)
+  - All active agents complete their document reviews
+- **Action**: Returns to standard ASReview active learning
+- **Benefit**: Newly discovered relevant documents enrich the training set, potentially improving classifier performance
+- **Flexibility**: Allows multiple mode switches during review process
+
+## 📈 Batch Simulation Framework
+The auto mode script provides a framework for running multiple simulations:
+```python
+# Example configuration
+params = {
+    'dataset_name': "Appenzeller-Herzog_2019",
+    'n_simulations': 65,    # number of simulations
+    'switch_threshold': 0.15,  # 15% threshold
+    'n_layers': 20,
+    'docs_per_agent': 10, 
+    'n_important_features': 20  # number of important features extracted from RF
+}
+```
 
 ## 📊 Performance
 
@@ -108,3 +151,15 @@ Experiments on [SYNERGY](https://github.com/asreview/synergy-dataset) datasets d
 - High-stakes medical reviews where missing critical studies has serious consequences
 - Interdisciplinary research requiring diverse terminology coverage
 - Comprehensive systematic reviews demanding exhaustive literature coverage
+
+## 📚 Citation
+If you use this code in your research, please cite:
+```
+@online{adaptive_asreview_agent,
+  title={Adaptive ASReview-Agent Hybrid for Enhanced Active Learning},
+  author={[Zeyu Ding]},
+  year={2025},
+  url={https://github.com/zdingae/Agent-Based-Pyramid-for-ASReview},
+  urldate={2025-06-13}
+}
+```
