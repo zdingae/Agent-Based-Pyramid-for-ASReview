@@ -104,7 +104,7 @@ keywords = ['Wilson', 'copper', 'hepatic', 'treatment', 'patient',
 - **Score Update**:
   - Success rate = 0: `election_score = 0.1` (heavily penalized)
   - Success rate = 1: `election_score = 2.0` (strongly promoted)
-  - Otherwise: `success_rate × (1 + remaining_ratio)`
+  - Otherwise: `success_rate × (1 + remaining_ratio)`(this ensures that the score is higher than 0.1 if at least one relevant literature is found)
 - **Deactivation**: Agent removed when all documents reviewed
 
 ## 🔄 Mode Switching Logic
