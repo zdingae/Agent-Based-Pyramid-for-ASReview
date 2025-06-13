@@ -100,7 +100,7 @@ keywords = ['Wilson', 'copper', 'hepatic', 'treatment', 'patient',
 
 #### Agent Selection & Update
 - **Selection**: Agent with highest election score reviews next batch
-- **Batch Strategy**: Top 10 documents by feature score within selected agent
+- **Batch Strategy**: The system selects the agent with the highest election score, then reviews up to 10 documents (or all remaining if fewer) within that agent ranked by feature-based scores learned from ASReview's classifier（or manually input keywords), effectively balancing exploration through agent partitioning with exploitation through feature-based prioritization.
 - **Score Update**:
   - Success rate = 0: `election_score = 0.1` (heavily penalized)
   - Success rate = 1: `election_score = 2.0` (strongly promoted)
