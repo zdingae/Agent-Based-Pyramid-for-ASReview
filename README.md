@@ -157,7 +157,7 @@ If you use this code in your research, please cite:
 ```
 @online{adaptive_asreview_agent,
   title={Adaptive ASReview-Agent Hybrid for Enhanced Active Learning},
-  author={[Zeyu Ding]},
+  author={Zeyu Ding},
   year={2025},
   url={https://github.com/zdingae/Agent-Based-Pyramid-for-ASReview},
   urldate={2025-06-13}
