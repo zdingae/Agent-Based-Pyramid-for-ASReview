@@ -84,7 +84,7 @@ keywords = ['Wilson', 'copper', 'hepatic', 'treatment', 'patient',
 - **Scoring**: Keyword frequency normalized by document length
 - **Weighting**: Square root transformation to reduce dominance of high-frequency terms
 
-#### Mode 2 (Auto): Predicted Words of Importance (Using Random Forest for current version)
+#### Mode 2 (Automated): Predicted Words of Importance (Using Random Forest for current version)
 - **Source**: Top features from Random Forest `feature_importances_`
 - **Dynamic Updates**: Re-extracted after each ASReview iteration
 - **Ranking**: Features weighted by importance scores (1/rank weighting)
